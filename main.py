@@ -1,10 +1,14 @@
 import pygame as pg
 from config import SCREEN_WIDTH, SCREEN_CAPTION, SCREEN_HEIGHT
+from scripts.player import Player
+from scripts.door import Door
 
 pg.init()
 
 screen = pg.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 pg.display.set_caption(SCREEN_CAPTION)
+player = Player()
+clock = pg.time.Clock()
 running = True
 
 while running:
@@ -13,8 +17,15 @@ while running:
         if event.type == pg.QUIT:
             running = False
     
+    player.movement()
+
     # screen background
     screen.fill("red")
+
+    player.draw(screen)
+
+    # Target FPS
+    clock.tick(60)
 
     # update display
     pg.display.flip()
