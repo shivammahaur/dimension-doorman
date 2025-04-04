@@ -8,6 +8,7 @@ pg.init()
 screen = pg.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 pg.display.set_caption(SCREEN_CAPTION)
 player = Player()
+door = Door()
 clock = pg.time.Clock()
 running = True
 
@@ -18,10 +19,12 @@ while running:
             running = False
     
     player.movement()
+    door.collision_player(player.rect)
 
     # screen background
     screen.fill("red")
 
+    door.draw(screen)
     player.draw(screen)
 
     # Target FPS
