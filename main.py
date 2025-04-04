@@ -20,6 +20,7 @@ while running:
     
     player.movement()
     door.collision_player(player.rect)
+    player.interact_door(door.rect)
 
     # screen background
     screen.fill("red")

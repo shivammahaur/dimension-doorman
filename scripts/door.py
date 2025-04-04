@@ -7,13 +7,11 @@ class Door:
         self.width = width
         self.height = height
         self.rect = pg.Rect(pos_x, pos_y, self.width, self.height)
+        self.is_interactable = True
+        self.is_open = False
 
     def draw(self, screen):
         pg.draw.rect(screen, (0, 255, 0), self.rect)
 
     def collision_player(self, player_rect):
-        door_entered = False
-        if self.rect.colliderect(player_rect):
-            door_entered = True
-            if door_entered == True:
-                print("Door entered")
+        return self.rect.colliderect(player_rect)
